@@ -9,7 +9,7 @@
 
 <style>
 html { scroll-behavior: smooth; }
-* { margin:0; padding:0; box-sizing:border-box; font-family:Poppins; }
+* { margin:0; padding:0; box-sizing: border-box; font-family:Poppins; }
 body { background:#0d0d0d; color:white; }
 
 /* NAVBAR */
@@ -21,23 +21,8 @@ nav a { color:white; text-decoration:none; margin-left:25px; font-weight:500; }
 .hero { height:90vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)), url("https://source.unsplash.com/1600x900/?car,lawn"); background-size:cover; background-position:center; }
 .hero h2 { font-size:60px; animation:slideUp 1s ease forwards; }
 .hero p { margin-top:15px; font-size:20px; animation:fadeText 2s ease forwards; }
-/* Fixed Book Now button */
-.hero .book-btn {
-padding: 18px 40px;
-border-radius: 30px;
-background:#00aaff;
-color:white;
-font-size:20px;
-font-weight:600;
-border:none;
-cursor:pointer;
-margin-top:20px;
-transition: all 0.3s ease;
-}
-.hero .book-btn:hover {
-transform: scale(1.08);
-box-shadow:0 0 15px #00aaff;
-}
+.hero .book-btn { padding:18px 40px; border-radius:30px; background:#00aaff; color:white; font-size:20px; font-weight:600; border:none; cursor:pointer; margin-top:20px; transition: all 0.3s ease; }
+.hero .book-btn:hover { transform: scale(1.08); box-shadow:0 0 15px #00aaff; }
 
 @keyframes slideUp { from{opacity:0; transform:translateY(40px);} to{opacity:1; transform:translateY(0);} }
 @keyframes fadeText { from{opacity:0;} to{opacity:1;} }
@@ -54,7 +39,7 @@ box-shadow:0 0 15px #00aaff;
 
 /* QUOTE CALCULATORS */
 .calculator { background:#111; padding:40px; border-radius:15px; max-width:500px; margin:40px auto; text-align:center; opacity:0; transform:translateY(40px); transition: all .8s ease; }
-.calculator input { padding:10px; margin-top:10px; width:100%; border-radius:8px; border:none; }
+.calculator input, .calculator select { padding:10px; margin-top:10px; width:100%; border-radius:8px; border:none; }
 .calculator button { margin-top:15px; padding:12px 20px; background:#00aaff; border:none; border-radius:8px; cursor:pointer; color:white; font-weight:600; }
 
 /* CONTACT */
@@ -77,7 +62,6 @@ footer { text-align:center; padding:30px; background:black; }
 /* FLOATING BUTTON */
 .floating-text { position:fixed; bottom:25px; right:25px; background:#00aaff; color:white; padding:16px 22px; border-radius:40px; font-weight:600; text-decoration:none; box-shadow:0 10px 25px rgba(0,0,0,.5); transition:.3s; z-index:999; }
 .floating-text:hover { transform:scale(1.08); box-shadow:0 0 20px #00aaff; }
-
 </style>
 
 <script>
@@ -85,6 +69,16 @@ footer { text-align:center; padding:30px; background:black; }
 function mowQuote(){ let sqft = document.getElementById("mow").value; let price = sqft*0.3; document.getElementById("mowResult").innerText = "Estimate: $"+price.toFixed(2); }
 function pressureQuote(){ let sqft = document.getElementById("pressure").value; let price = sqft*0.5; document.getElementById("pressureResult").innerText = "Estimate: $"+price.toFixed(2); }
 function snowQuote(){ let sqft = document.getElementById("snow").value; let price = sqft*0.3; document.getElementById("snowResult").innerText = "Estimate: $"+price.toFixed(2); }
+
+/* Car Detailing Calculator */
+function detailingQuote() {
+let base = parseInt(document.getElementById("carType").value);
+let total = base;
+if(document.getElementById("dirty").checked){ total +=30; } // Very Dirty Car
+if(document.getElementById("petHair").checked){ total +=20; }
+if(document.getElementById("threeRow").checked){ total +=20; }
+document.getElementById("detailingResult").innerText = "Estimate: $" + total.toFixed(2);
+}
 
 /* Fade-in animation */
 const observer = new IntersectionObserver(entries => {
@@ -123,33 +117,83 @@ observer.observe(el);
 <section class="section" id="services">
 <h2>Our Services</h2>
 <div class="services">
-<div class="card"><h3>Car Detailing</h3><p>Interior + exterior deep clean</p><div class="price">Sedan $75<br>SUV $100<br>Truck $140</div></div>
-<div class="card"><h3>Lawn Mowing</h3><p>Keep your property looking perfect all season</p><div class="price">$0.30 per sq ft</div></div>
-<div class="card"><h3>Pressure Washing</h3><p>Driveways, sidewalks, decks, siding</p><div class="price">$0.50 per sq ft</div></div>
-<div class="card"><h3>Snow Removal</h3><p>Driveways & sidewalks cleared</p><div class="price">$0.30 per sq ft</div></div>
+<div class="card">
+<h3>Car Detailing</h3>
+<p>Interior + exterior deep clean</p>
+<div class="price">
+Sedan $80<br>
+Small SUV $100<br>
+Large SUV $120<br>
+Truck $150<br><br>
+<small>Extras:</small><br>
+Very Dirty Car: +$20–$40<br>
+Pet Hair: +$20<br>
+3-Row SUV: +$20
+</div>
+</div>
+
+<div class="card"><h3>Lawn Mowing</h3>
+<p>Keep your property looking perfect all season</p>
+<div class="price">$0.30 per sq ft</div>
+</div>
+
+<div class="card"><h3>Pressure Washing</h3>
+<p>Driveways, sidewalks, decks, siding</p>
+<div class="price">$0.50 per sq ft</div>
+</div>
+
+<div class="card"><h3>Snow Removal</h3>
+<p>Driveways & sidewalks cleared</p>
+<div class="price">$0.30 per sq ft</div>
+</div>
 </div>
 </section>
 
 <section class="section" id="quote">
 <h2>Instant Quote</h2>
+
+<!-- Car Detailing Calculator -->
+<div class="calculator">
+<h3>Car Detailing Estimate</h3>
+<select id="carType">
+<option value="80">Sedan - $80</option>
+<option value="100">Small SUV - $100</option>
+<option value="120">Large SUV - $120</option>
+<option value="150">Truck - $150</option>
+</select>
+<div style="margin-top:10px;">
+<input type="checkbox" id="dirty"><label for="dirty"> Very Dirty Car (+$20–$40)</label><br>
+<input type="checkbox" id="petHair"><label for="petHair"> Pet Hair Removal (+$20)</label><br>
+<input type="checkbox" id="threeRow"><label for="threeRow"> 3-Row SUV (+$20)</label>
+</div>
+<button onclick="detailingQuote()">Calculate</button>
+<p id="detailingResult"></p>
+</div>
+
+<!-- Lawn Mowing Calculator -->
 <div class="calculator">
 <h3>Lawn Mowing Estimate</h3>
 <input id="mow" type="number" placeholder="Square feet">
 <button onclick="mowQuote()">Calculate</button>
 <p id="mowResult"></p>
 </div>
+
+<!-- Pressure Washing Calculator -->
 <div class="calculator">
 <h3>Pressure Washing Estimate</h3>
 <input id="pressure" type="number" placeholder="Square feet">
 <button onclick="pressureQuote()">Calculate</button>
 <p id="pressureResult"></p>
 </div>
+
+<!-- Snow Removal Calculator -->
 <div class="calculator">
 <h3>Snow Removal Estimate</h3>
 <input id="snow" type="number" placeholder="Square feet">
 <button onclick="snowQuote()">Calculate</button>
 <p id="snowResult"></p>
 </div>
+
 </section>
 
 <section class="contact" id="contact">
