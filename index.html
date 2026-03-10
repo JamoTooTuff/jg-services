@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JG Outdoor & Property Services</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 html{scroll-behavior:smooth;}
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
@@ -19,8 +22,10 @@ nav a{color:white;text-decoration:none;margin-left:25px;font-weight:500;}
 .hero{height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url("https://source.unsplash.com/1600x900/?car,lawn");background-size:cover;background-position:center;}
 .hero h2{font-size:60px;animation:slideUp 1s ease forwards;}
 .hero p{margin-top:15px;font-size:20px;animation:fadeText 2s ease forwards;}
-.hero button{margin-top:20px;padding:15px 35px;border:none;background:#00aaff;border-radius:30px;color:white;font-size:18px;cursor:pointer;transition:.3s;}
-.hero button:hover{transform:scale(1.07);box-shadow:0 0 15px #00aaff;}
+.book-btn{padding:18px 40px;border-radius:30px;background:#00aaff;color:white;font-size:20px;font-weight:600;border:none;cursor:pointer;margin-top:20px;}
+.book-btn:hover{transform:scale(1.08);box-shadow:0 0 15px #00aaff;}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeText{from{opacity:0;}to{opacity:1;}}
 
 /* SECTIONS */
 .section{padding:80px 8%;}
@@ -34,67 +39,60 @@ nav a{color:white;text-decoration:none;margin-left:25px;font-weight:500;}
 
 /* CALCULATORS */
 .calculator{background:#111;padding:40px;border-radius:15px;max-width:500px;margin:40px auto;text-align:center;opacity:0;transform:translateY(40px);}
-.calculator input{padding:10px;margin-top:10px;width:100%;border-radius:8px;border:none;}
-.calculator button{margin-top:15px;padding:12px 20px;background:#00aaff;border:none;border-radius:8px;cursor:pointer;}
+.calculator input,.calculator select{padding:10px;margin-top:10px;width:100%;border-radius:8px;border:none;}
+.calculator button{margin-top:15px;padding:12px 20px;background:#00aaff;border:none;border-radius:8px;cursor:pointer;color:white;}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+.gallery img{width:100%;border-radius:12px;cursor:pointer;transition:.3s;}
+.gallery img:hover{transform:scale(1.05);}
+
+/* BEFORE AFTER SLIDER */
+.compare{position:relative;max-width:600px;margin:40px auto;}
+.compare img{width:100%;display:block;border-radius:12px;}
+.compare .after{position:absolute;top:0;left:0;overflow:hidden;width:50%;}
+.compare input{position:absolute;width:100%;bottom:-25px;}
 
 /* CONTACT */
 .contact{text-align:center;padding:80px 8%;background:#111;}
-.contact button{padding:15px 35px;border:none;background:#00aaff;border-radius:30px;font-size:18px;margin-top:20px;cursor:pointer;}
-
-/* FOOTER */
-footer{text-align:center;padding:30px;background:black;}
-
-/* FADE-IN SCROLL ANIMATION */
-.fade-in{opacity:1 !important;transform:translateY(0) !important;transition:all .8s ease;}
+.contact button{padding:15px 35px;border-radius:30px;background:#00aaff;border:none;color:white;margin:8px;cursor:pointer;}
 
 /* FLOATING BUTTON */
-.floating-text{position:fixed;bottom:25px;right:25px;background:#00aaff;color:white;padding:16px 22px;border-radius:40px;font-weight:600;text-decoration:none;box-shadow:0 10px 25px rgba(0,0,0,.5);transition:.3s;z-index:999;}
-.floating-text:hover{transform:scale(1.08);box-shadow:0 0 20px #00aaff;}
+.floating-text{position:fixed;bottom:25px;right:25px;background:#00aaff;color:white;padding:16px 22px;border-radius:40px;font-weight:600;text-decoration:none;z-index:999;}
+.fade-in{opacity:1!important;transform:translateY(0)!important;transition:.8s;}
 
-/* IMAGE SLIDERS */
-.compare{position:relative;max-width:600px;margin:30px auto;border-radius:15px;overflow:hidden;opacity:0;transform:translateY(40px);}
-.compare img{width:100%;display:block;}
-.compare .after{position:absolute;top:0;left:0;width:50%;overflow:hidden;}
-.compare .after img{width:100%;display:block;}
-.compare input[type=range]{width:100%;margin-top:10px;}
+/* IMAGE VIEWER */
+.viewer{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);justify-content:center;align-items:center;z-index:2000;}
+.viewer img{max-width:90%;max-height:90%;}
+
 </style>
 
 <script>
-/* FADE IN ANIMATION */
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {if(entry.isIntersecting){entry.target.classList.add("fade-in");}});
-});
-document.querySelectorAll(".card, .calculator, .compare").forEach(el=>{observer.observe(el);});
-
-/* SLIDER FUNCTION */
-function slide(range){
-let afterDiv = range.previousElementSibling;
-afterDiv.style.width = range.value + "%";
+// calculators
+function mowQuote(){let sqft=document.getElementById("mow").value;let price=sqft*.30;document.getElementById("mowResult").innerText="Estimate: $"+price.toFixed(2);}
+function pressureQuote(){let sqft=document.getElementById("pressure").value;let price=sqft*.50;document.getElementById("pressureResult").innerText="Estimate: $"+price.toFixed(2);}
+function snowQuote(){let sqft=document.getElementById("snow").value;let price=sqft*.30;document.getElementById("snowResult").innerText="Estimate: $"+price.toFixed(2);}
+function detailingQuote(){
+let base=parseInt(document.getElementById("carType").value);
+let total=base;
+if(document.getElementById("dirty").checked){total+=30;}
+if(document.getElementById("petHair").checked){total+=20;}
+if(document.getElementById("threeRow").checked){total+=20;}
+document.getElementById("detailResult").innerText="Estimate: $"+total.toFixed(2);
 }
 
-/* QUOTE CALCULATORS */
-function mowQuote(){
-let sqft=document.getElementById("mow").value;
-let price=sqft*0.30;
-document.getElementById("mowResult").innerText="Estimate: $"+price.toFixed(2);
-}
-function pressureQuote(){
-let sqft=document.getElementById("pressure").value;
-let price=sqft*0.50;
-document.getElementById("pressureResult").innerText="Estimate: $"+price.toFixed(2);
-}
-function snowQuote(){
-let sqft=document.getElementById("snow").value;
-let price=sqft*0.30;
-document.getElementById("snowResult").innerText="Estimate: $"+price.toFixed(2);
-}
+// fade animation
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("fade-in");}});});
+window.addEventListener("load",()=>{document.querySelectorAll(".card,.calculator").forEach(el=>{observer.observe(el);});});
 
-/* CONTACT BUTTONS */
-function textJameson(){window.location.href="sms:+15072139284";}
-function textGavin(){window.location.href="sms:+19898605957";}
-function emailJameson(){window.location.href="mailto:Jamesondgibson@gmail.com?subject=Service Inquiry&body=Hello,%0AI am interested in your services. Please advise.%0AThank you.";}
-function emailGavin(){window.location.href="mailto:Gavin.Purman@gmail.com?subject=Service Inquiry&body=Hello,%0AI am interested in your services. Please advise.%0AThank you.";}
+// gallery viewer
+function openViewer(src){document.getElementById("viewerImg").src=src;document.getElementById("viewer").style.display="flex";}
+function closeViewer(){document.getElementById("viewer").style.display="none";}
+
+// slider
+function slide(x){let container=x.parentElement;let after=container.querySelector(".after");after.style.width=x.value+"%";}
 </script>
+
 </head>
 
 <body>
@@ -104,7 +102,7 @@ function emailGavin(){window.location.href="mailto:Gavin.Purman@gmail.com?subjec
 <div>
 <a href="#services">Services</a>
 <a href="#quote">Quotes</a>
-<a href="#gallery">Gallery</a>
+<a href="#gallery">Our Work</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
@@ -112,63 +110,113 @@ function emailGavin(){window.location.href="mailto:Gavin.Purman@gmail.com?subjec
 <section class="hero">
 <h2>Property Care & Auto Detailing</h2>
 <p>Your Property Is Our Priority</p>
-<p>Lawn Care • Pressure Washing • Snow Removal • Professional Car Detailing</p>
-<button onclick="document.getElementById('contact').scrollIntoView()">Book Now</button>
+<p>Lawn Care • Pressure Washing • Snow Removal • Car Detailing</p>
+<button class="book-btn" onclick="document.getElementById('contact').scrollIntoView()">Book Now</button>
 </section>
 
 <section class="section" id="services">
 <h2>Our Services</h2>
 <div class="services">
-<div class="card"><h3>Car Detailing</h3><p>Interior + exterior deep clean</p><div class="price">Sedan $80<br>Small SUV $100<br>Large SUV $120<br>3-Row SUV +$20<br>Truck $150<br>Very Dirty +$20-40<br>Pet Hair +$20</div></div>
-<div class="card"><h3>Lawn Mowing</h3><p>Keep your property looking perfect all season</p><div class="price">$0.30 per sq ft</div></div>
-<div class="card"><h3>Pressure Washing</h3><p>Driveways, sidewalks, decks, siding</p><div class="price">$0.50 per sq ft</div></div>
-<div class="card"><h3>Snow Removal</h3><p>Driveways & sidewalks cleared</p><div class="price">$0.30 per sq ft</div></div>
+<div class="card">
+<h3>Car Detailing</h3>
+<p>Interior + exterior deep clean</p>
+<div class="price">
+Sedan $80<br>
+Small SUV $100<br>
+Large SUV $120<br>
+Truck $150<br><br>
+Extras:<br>
+Very Dirty Car +$20-40<br>
+Pet Hair +$20<br>
+3 Row SUV +$20
+</div>
+</div>
+<div class="card"><h3>Lawn Mowing</h3><div class="price">$0.30 per sq ft</div></div>
+<div class="card"><h3>Pressure Washing</h3><div class="price">$0.50 per sq ft</div></div>
+<div class="card"><h3>Snow Removal</h3><div class="price">$0.30 per sq ft</div></div>
 </div>
 </section>
 
 <section class="section" id="quote">
 <h2>Instant Quote</h2>
-<div class="calculator"><h3>Lawn Mowing Estimate</h3><input id="mow" type="number" placeholder="Square feet"><button onclick="mowQuote()">Calculate</button><p id="mowResult"></p></div>
-<div class="calculator"><h3>Pressure Washing Estimate</h3><input id="pressure" type="number" placeholder="Square feet"><button onclick="pressureQuote()">Calculate</button><p id="pressureResult"></p></div>
-<div class="calculator"><h3>Snow Removal Estimate</h3><input id="snow" type="number" placeholder="Square feet"><button onclick="snowQuote()">Calculate</button><p id="snowResult"></p></div>
-<p style="text-align:center;margin-top:20px;">Tip: Use <a href="https://earth.google.com/web/" target="_blank" style="color:#00aaff;">Google Earth</a> to measure your lawn, driveway, or walkway square footage.</p>
+<div style="max-width:700px;margin:auto;background:#111;padding:25px;border-radius:12px;margin-bottom:40px;">
+<h3 style="color:#00aaff;">How to Measure Square Feet</h3>
+<p>Use Google Earth to measure your lawn or driveway.</p>
+<ol>
+<li>Open Google Earth</li>
+<li>Search your address</li>
+<li>Click the Measure tool</li>
+<li>Select Area</li>
+<li>Click around your lawn or driveway</li>
+</ol>
+<button onclick="window.open('https://earth.google.com/web/')"
+style="margin-top:15px;padding:10px 18px;background:#00aaff;border:none;border-radius:8px;color:white;">Open Google Earth</button>
+</div>
+
+<div class="calculator">
+<h3>Car Detailing Estimate</h3>
+<select id="carType">
+<option value="80">Sedan</option>
+<option value="100">Small SUV</option>
+<option value="120">Large SUV</option>
+<option value="150">Truck</option>
+</select>
+<input type="checkbox" id="dirty"> Very Dirty Car<br>
+<input type="checkbox" id="petHair"> Pet Hair<br>
+<input type="checkbox" id="threeRow"> 3 Row SUV<br>
+<button onclick="detailingQuote()">Calculate</button>
+<p id="detailResult"></p>
+</div>
+
+<div class="calculator">
+<h3>Lawn Mowing</h3>
+<input id="mow" type="number" placeholder="Square feet">
+<button onclick="mowQuote()">Calculate</button>
+<p id="mowResult"></p>
+</div>
+
 </section>
 
 <section class="section" id="gallery">
 <h2>Our Work</h2>
 
+<!-- Slider 1 -->
 <div class="compare">
-<img src="images/IMG_0985.png" alt="Before Outside">
-<div class="after"><img src="images/IMG_0988.png" alt="After Outside"></div>
+<img src="images/before1.jpg" alt="Before Interior">
+<div class="after">
+<img src="images/after1.jpg" alt="After Interior">
+</div>
 <input type="range" min="0" max="100" value="50" oninput="slide(this)">
 </div>
 
+<!-- Slider 2 -->
 <div class="compare">
-<img src="images/IMG_0982.png" alt="Before Inside">
-<div class="after"><img src="images/IMG_0983.png" alt="After Inside"></div>
+<img src="images/before2.jpg" alt="Before Exterior">
+<div class="after">
+<img src="images/after2.jpg" alt="After Exterior">
+</div>
 <input type="range" min="0" max="100" value="50" oninput="slide(this)">
 </div>
 
 </section>
 
+<div id="viewer" class="viewer" onclick="closeViewer()">
+<img id="viewerImg">
+</div>
+
 <section class="contact" id="contact">
 <h2>Book a Service</h2>
-<p>Serving Owatonna and surrounding areas</p>
-
-<h3>Text Us</h3>
-<button onclick="textJameson()">Text Jameson</button>
-<button onclick="textGavin()">Text Gavin</button>
-
-<h3>Email Us</h3>
-<button onclick="emailJameson()">Email Jameson</button>
-<button onclick="emailGavin()">Email Gavin</button>
+<button onclick="window.location.href='sms:+15072139284'">Text Jameson</button>
+<button onclick="window.location.href='sms:+19898605957'">Text Gavin</button>
+<button onclick="window.location.href='mailto:Jamesondgibson@gmail.com?subject=Service%20Inquiry&body=Hello,%20I%20am%20interested%20in%20a%20service.%20My%20address%20is%20[Your%20Address]%20and%20[Day]%20works%20best.">Email Jameson</button>
+<button onclick="window.location.href='mailto:Gavin.Purman@gmail.com?subject=Service%20Inquiry&body=Hello,%20I%20am%20interested%20in%20a%20service.%20My%20address%20is%20[Your%20Address]%20and%20[Day]%20works%20best.'">Email Gavin</button>
 </section>
 
 <footer>
 <p>© 2026 JG Outdoor & Property Services</p>
 </footer>
 
-<a href="#contact" class="floating-text">Call For A Quote</a>
+<a href="#contact" class="floating-text">Call for a Quote</a>
 
 </body>
 </html>
