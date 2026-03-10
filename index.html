@@ -5,93 +5,314 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JG Outdoor & Property Services</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-html { scroll-behavior: smooth; }
-* { margin:0; padding:0; box-sizing: border-box; font-family:Poppins; }
-body { background:#0d0d0d; color:white; }
 
-/* NAVBAR */
-nav { display:flex; justify-content:space-between; align-items:center; padding:20px 8%; background:black; position:sticky; top:0; z-index:1000; }
-nav h1 { color:#00aaff; }
-nav a { color:white; text-decoration:none; margin-left:25px; font-weight:500; }
+html{scroll-behavior:smooth;}
 
-/* HERO */
-.hero { height:90vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)), url("https://source.unsplash.com/1600x900/?car,lawn"); background-size:cover; background-position:center; }
-.hero h2 { font-size:60px; animation:slideUp 1s ease forwards; }
-.hero p { margin-top:15px; font-size:20px; animation:fadeText 2s ease forwards; }
-.hero .book-btn { padding:18px 40px; border-radius:30px; background:#00aaff; color:white; font-size:20px; font-weight:600; border:none; cursor:pointer; margin-top:20px; transition: all 0.3s ease; }
-.hero .book-btn:hover { transform: scale(1.08); box-shadow:0 0 15px #00aaff; }
-
-@keyframes slideUp { from{opacity:0; transform:translateY(40px);} to{opacity:1; transform:translateY(0);} }
-@keyframes fadeText { from{opacity:0;} to{opacity:1;} }
-
-/* SECTIONS */
-.section { padding:80px 8%; }
-.section h2 { text-align:center; margin-bottom:50px; font-size:40px; }
-
-/* SERVICES */
-.services { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; }
-.card { background:#1a1a1a; padding:30px; border-radius:15px; text-align:center; transition:transform .4s, box-shadow .4s, opacity .8s ease, transform .8s ease; opacity:0; transform:translateY(40px); }
-.card:hover { transform:translateY(-12px) scale(1.03); box-shadow:0 15px 35px rgba(0,170,255,.35); }
-.price { color:#00aaff; font-size:20px; margin-top:10px; }
-
-/* QUOTE CALCULATORS */
-.calculator { background:#111; padding:40px; border-radius:15px; max-width:500px; margin:40px auto; text-align:center; opacity:0; transform:translateY(40px); transition: all .8s ease; }
-.calculator input, .calculator select { padding:10px; margin-top:10px; width:100%; border-radius:8px; border:none; }
-.calculator button { margin-top:15px; padding:12px 20px; background:#00aaff; border:none; border-radius:8px; cursor:pointer; color:white; font-weight:600; }
-
-/* CONTACT */
-.contact { text-align:center; padding:80px 8%; background:#111; }
-.contact button { padding:15px 35px; border-radius:30px; background:#00aaff; color:white; border:none; cursor:pointer; font-size:16px; font-weight:600; margin:8px; transition: all 0.3s ease; min-width:160px; }
-.contact button:hover { transform: scale(1.08); box-shadow:0 0 15px #00aaff; }
-
-/* MOBILE */
-@media screen and (max-width:600px){
-.contact button { display:block; width:80%; margin:10px auto; }
-.floating-text { padding:12px 18px; font-size:14px; }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
 }
 
-/* FOOTER */
-footer { text-align:center; padding:30px; background:black; }
+body{
+background:#0d0d0d;
+color:white;
+}
 
-/* FADE-IN */
-.fade-in { opacity:1 !important; transform:translateY(0) !important; }
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:black;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+nav h1{color:#00aaff;}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-weight:500;
+}
+
+/* HERO */
+
+.hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+url("https://source.unsplash.com/1600x900/?car,lawn");
+background-size:cover;
+background-position:center;
+}
+
+.hero h2{
+font-size:60px;
+animation:slideUp 1s ease forwards;
+}
+
+.hero p{
+margin-top:15px;
+font-size:20px;
+animation:fadeText 2s ease forwards;
+}
+
+.book-btn{
+padding:18px 40px;
+border-radius:30px;
+background:#00aaff;
+color:white;
+font-size:20px;
+font-weight:600;
+border:none;
+cursor:pointer;
+margin-top:20px;
+}
+
+.book-btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 15px #00aaff;
+}
+
+@keyframes slideUp{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeText{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+/* SECTIONS */
+
+.section{
+padding:80px 8%;
+}
+
+.section h2{
+text-align:center;
+margin-bottom:50px;
+font-size:40px;
+}
+
+/* SERVICES */
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:#1a1a1a;
+padding:30px;
+border-radius:15px;
+text-align:center;
+transition:transform .4s, box-shadow .4s;
+opacity:0;
+transform:translateY(40px);
+}
+
+.card:hover{
+transform:translateY(-12px) scale(1.03);
+box-shadow:0 15px 35px rgba(0,170,255,.35);
+}
+
+.price{
+color:#00aaff;
+font-size:20px;
+margin-top:10px;
+}
+
+/* CALCULATORS */
+
+.calculator{
+background:#111;
+padding:40px;
+border-radius:15px;
+max-width:500px;
+margin:40px auto;
+text-align:center;
+opacity:0;
+transform:translateY(40px);
+}
+
+.calculator input,.calculator select{
+padding:10px;
+margin-top:10px;
+width:100%;
+border-radius:8px;
+border:none;
+}
+
+.calculator button{
+margin-top:15px;
+padding:12px 20px;
+background:#00aaff;
+border:none;
+border-radius:8px;
+cursor:pointer;
+color:white;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+/* IMAGE VIEWER */
+
+.viewer{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.9);
+justify-content:center;
+align-items:center;
+z-index:2000;
+}
+
+.viewer img{
+max-width:90%;
+max-height:90%;
+}
+
+/* CONTACT */
+
+.contact{
+text-align:center;
+padding:80px 8%;
+background:#111;
+}
+
+.contact button{
+padding:15px 35px;
+border-radius:30px;
+background:#00aaff;
+border:none;
+color:white;
+margin:8px;
+cursor:pointer;
+}
 
 /* FLOATING BUTTON */
-.floating-text { position:fixed; bottom:25px; right:25px; background:#00aaff; color:white; padding:16px 22px; border-radius:40px; font-weight:600; text-decoration:none; box-shadow:0 10px 25px rgba(0,0,0,.5); transition:.3s; z-index:999; }
-.floating-text:hover { transform:scale(1.08); box-shadow:0 0 20px #00aaff; }
+
+.floating-text{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#00aaff;
+color:white;
+padding:16px 22px;
+border-radius:40px;
+font-weight:600;
+text-decoration:none;
+z-index:999;
+}
+
+.fade-in{
+opacity:1!important;
+transform:translateY(0)!important;
+transition:.8s;
+}
+
 </style>
 
 <script>
-/* Quote Calculators */
-function mowQuote(){ let sqft = document.getElementById("mow").value; let price = sqft*0.3; document.getElementById("mowResult").innerText = "Estimate: $"+price.toFixed(2); }
-function pressureQuote(){ let sqft = document.getElementById("pressure").value; let price = sqft*0.5; document.getElementById("pressureResult").innerText = "Estimate: $"+price.toFixed(2); }
-function snowQuote(){ let sqft = document.getElementById("snow").value; let price = sqft*0.3; document.getElementById("snowResult").innerText = "Estimate: $"+price.toFixed(2); }
 
-/* Car Detailing Calculator */
-function detailingQuote() {
-let base = parseInt(document.getElementById("carType").value);
-let total = base;
-if(document.getElementById("dirty").checked){ total +=30; } // Very Dirty Car
-if(document.getElementById("petHair").checked){ total +=20; }
-if(document.getElementById("threeRow").checked){ total +=20; }
-document.getElementById("detailingResult").innerText = "Estimate: $" + total.toFixed(2);
+/* calculators */
+
+function mowQuote(){
+let sqft=document.getElementById("mow").value;
+let price=sqft*.30;
+document.getElementById("mowResult").innerText="Estimate: $"+price.toFixed(2);
 }
 
-/* Fade-in animation */
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add("fade-in"); } });
-}, { threshold: 0.1 });
+function pressureQuote(){
+let sqft=document.getElementById("pressure").value;
+let price=sqft*.50;
+document.getElementById("pressureResult").innerText="Estimate: $"+price.toFixed(2);
+}
 
-window.addEventListener("load", () => {
-document.querySelectorAll(".card, .calculator").forEach(el=>{
-const rect = el.getBoundingClientRect();
-if(rect.top < window.innerHeight) el.classList.add("fade-in");
+function snowQuote(){
+let sqft=document.getElementById("snow").value;
+let price=sqft*.30;
+document.getElementById("snowResult").innerText="Estimate: $"+price.toFixed(2);
+}
+
+function detailingQuote(){
+
+let base=parseInt(document.getElementById("carType").value);
+let total=base;
+
+if(document.getElementById("dirty").checked){total+=30;}
+if(document.getElementById("petHair").checked){total+=20;}
+if(document.getElementById("threeRow").checked){total+=20;}
+
+document.getElementById("detailResult").innerText="Estimate: $"+total.toFixed(2);
+}
+
+/* fade animation */
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("fade-in");
+}
+});
+});
+
+window.addEventListener("load",()=>{
+document.querySelectorAll(".card,.calculator").forEach(el=>{
 observer.observe(el);
 });
 });
+
+/* gallery viewer */
+
+function openViewer(src){
+document.getElementById("viewerImg").src=src;
+document.getElementById("viewer").style.display="flex";
+}
+
+function closeViewer(){
+document.getElementById("viewer").style.display="none";
+}
+
 </script>
 
 </head>
@@ -99,24 +320,36 @@ observer.observe(el);
 <body>
 
 <nav>
+
 <h1>JG Outdoor & Property Services</h1>
+
 <div>
 <a href="#services">Services</a>
 <a href="#quote">Quotes</a>
+<a href="#gallery">Our Work</a>
 <a href="#contact">Contact</a>
 </div>
+
 </nav>
 
 <section class="hero">
+
 <h2>Property Care & Auto Detailing</h2>
+
 <p>Your Property Is Our Priority</p>
-<p>Lawn Care • Pressure Washing • Snow Removal • Professional Car Detailing</p>
+
+<p>Lawn Care • Pressure Washing • Snow Removal • Car Detailing</p>
+
 <button class="book-btn" onclick="document.getElementById('contact').scrollIntoView()">Book Now</button>
+
 </section>
 
 <section class="section" id="services">
+
 <h2>Our Services</h2>
+
 <div class="services">
+
 <div class="card">
 <h3>Car Detailing</h3>
 <p>Interior + exterior deep clean</p>
@@ -125,95 +358,133 @@ Sedan $80<br>
 Small SUV $100<br>
 Large SUV $120<br>
 Truck $150<br><br>
-<small>Extras:</small><br>
-Very Dirty Car: +$20–$40<br>
-Pet Hair: +$20<br>
-3-Row SUV: +$20
+Extras:<br>
+Very Dirty Car +$20-40<br>
+Pet Hair +$20<br>
+3 Row SUV +$20
 </div>
 </div>
 
-<div class="card"><h3>Lawn Mowing</h3>
-<p>Keep your property looking perfect all season</p>
+<div class="card">
+<h3>Lawn Mowing</h3>
 <div class="price">$0.30 per sq ft</div>
 </div>
 
-<div class="card"><h3>Pressure Washing</h3>
-<p>Driveways, sidewalks, decks, siding</p>
+<div class="card">
+<h3>Pressure Washing</h3>
 <div class="price">$0.50 per sq ft</div>
 </div>
 
-<div class="card"><h3>Snow Removal</h3>
-<p>Driveways & sidewalks cleared</p>
+<div class="card">
+<h3>Snow Removal</h3>
 <div class="price">$0.30 per sq ft</div>
 </div>
+
 </div>
+
 </section>
 
 <section class="section" id="quote">
+
 <h2>Instant Quote</h2>
 
-<!-- Car Detailing Calculator -->
+<div style="max-width:700px;margin:auto;background:#111;padding:25px;border-radius:12px;margin-bottom:40px;">
+
+<h3 style="color:#00aaff;">How to Measure Square Feet</h3>
+
+<p>Use Google Earth to measure your lawn or driveway.</p>
+
+<ol>
+<li>Open Google Earth</li>
+<li>Search your address</li>
+<li>Click the Measure tool</li>
+<li>Select Area</li>
+<li>Click around your lawn or driveway</li>
+</ol>
+
+<button onclick="window.open('https://earth.google.com/web/')"
+style="margin-top:15px;padding:10px 18px;background:#00aaff;border:none;border-radius:8px;color:white;">
+Open Google Earth
+</button>
+
+</div>
+
 <div class="calculator">
+
 <h3>Car Detailing Estimate</h3>
+
 <select id="carType">
-<option value="80">Sedan - $80</option>
-<option value="100">Small SUV - $100</option>
-<option value="120">Large SUV - $120</option>
-<option value="150">Truck - $150</option>
+<option value="80">Sedan</option>
+<option value="100">Small SUV</option>
+<option value="120">Large SUV</option>
+<option value="150">Truck</option>
 </select>
-<div style="margin-top:10px;">
-<input type="checkbox" id="dirty"><label for="dirty"> Very Dirty Car (+$20–$40)</label><br>
-<input type="checkbox" id="petHair"><label for="petHair"> Pet Hair Removal (+$20)</label><br>
-<input type="checkbox" id="threeRow"><label for="threeRow"> 3-Row SUV (+$20)</label>
-</div>
+
+<input type="checkbox" id="dirty"> Very Dirty Car<br>
+<input type="checkbox" id="petHair"> Pet Hair<br>
+<input type="checkbox" id="threeRow"> 3 Row SUV<br>
+
 <button onclick="detailingQuote()">Calculate</button>
-<p id="detailingResult"></p>
+
+<p id="detailResult"></p>
+
 </div>
 
-<!-- Lawn Mowing Calculator -->
 <div class="calculator">
-<h3>Lawn Mowing Estimate</h3>
+
+<h3>Lawn Mowing</h3>
+
 <input id="mow" type="number" placeholder="Square feet">
+
 <button onclick="mowQuote()">Calculate</button>
+
 <p id="mowResult"></p>
-</div>
 
-<!-- Pressure Washing Calculator -->
-<div class="calculator">
-<h3>Pressure Washing Estimate</h3>
-<input id="pressure" type="number" placeholder="Square feet">
-<button onclick="pressureQuote()">Calculate</button>
-<p id="pressureResult"></p>
-</div>
-
-<!-- Snow Removal Calculator -->
-<div class="calculator">
-<h3>Snow Removal Estimate</h3>
-<input id="snow" type="number" placeholder="Square feet">
-<button onclick="snowQuote()">Calculate</button>
-<p id="snowResult"></p>
 </div>
 
 </section>
 
-<section class="contact" id="contact">
-<h2>Book a Service</h2>
-<p>Serving Owatonna and surrounding areas</p>
+<section class="section" id="gallery">
 
-<h3>Text Us</h3>
+<h2>Our Work</h2>
+
+<div class="gallery">
+
+<img src="images/detail1.jpg" onclick="openViewer(this.src)">
+<img src="images/detail2.jpg" onclick="openViewer(this.src)">
+<img src="images/lawn1.jpg" onclick="openViewer(this.src)">
+<img src="images/pressure1.jpg" onclick="openViewer(this.src)">
+
+</div>
+
+</section>
+
+<div id="viewer" class="viewer" onclick="closeViewer()">
+<img id="viewerImg">
+</div>
+
+<section class="contact" id="contact">
+
+<h2>Book a Service</h2>
+
 <button onclick="window.location.href='sms:+15072139284'">Text Jameson</button>
+
 <button onclick="window.location.href='sms:+19898605957'">Text Gavin</button>
 
-<h3>Email Us</h3>
-<button onclick="window.location.href='mailto:Jamesondgibson@gmail.com?subject=Service%20Inquiry&body=Hello%20Jameson,%0AI%20am%20interested%20in%20scheduling%20a%20service.%0AAddress:%20[your%20address]%0APreferred%20day:%20[your%20day]%0AThank%20you.'">Email Jameson</button>
-<button onclick="window.location.href='mailto:Gavin.Purman@gmail.com?subject=Service%20Inquiry&body=Hello%20Gavin,%0AI%20am%20interested%20in%20scheduling%20a%20service.%0AAddress:%20[your%20address]%0APreferred%20day:%20[your%20day]%0AThank%20you.'">Email Gavin</button>
+<button onclick="window.location.href='mailto:Jamesondgibson@gmail.com'">Email Jameson</button>
+
+<button onclick="window.location.href='mailto:Gavin.Purman@gmail.com'">Email Gavin</button>
+
 </section>
 
 <footer>
+
 <p>© 2026 JG Outdoor & Property Services</p>
+
 </footer>
 
 <a href="#contact" class="floating-text">Call for a Quote</a>
 
 </body>
+
 </html>
