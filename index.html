@@ -9,77 +9,93 @@
 
 <style>
 html { scroll-behavior: smooth; }
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: Poppins; }
-body { background: #0d0d0d; color: white; }
+* { margin:0; padding:0; box-sizing:border-box; font-family:Poppins; }
+body { background:#0d0d0d; color:white; }
 
 /* NAVBAR */
-nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: black; position: sticky; top: 0; z-index: 1000; }
-nav h1 { color: #00aaff; }
-nav a { color: white; text-decoration: none; margin-left: 25px; font-weight: 500; }
+nav { display:flex; justify-content:space-between; align-items:center; padding:20px 8%; background:black; position:sticky; top:0; z-index:1000; }
+nav h1 { color:#00aaff; }
+nav a { color:white; text-decoration:none; margin-left:25px; font-weight:500; }
 
 /* HERO */
-.hero { height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)), url("https://source.unsplash.com/1600x900/?car,lawn"); background-size: cover; background-position: center; }
-.hero h2 { font-size: 60px; animation: slideUp 1s ease forwards; }
-.hero p { margin-top: 15px; font-size: 20px; animation: fadeText 2s ease forwards; }
-.hero button { padding: 15px 35px; border-radius: 30px; background: #00aaff; color: white; border: none; font-size: 18px; font-weight: 600; cursor: pointer; margin-top: 15px; }
-.hero button:hover { transform: scale(1.08); box-shadow: 0 0 15px #00aaff; }
-@keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeText { from { opacity: 0; } to { opacity: 1; } }
+.hero { height:90vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)), url("https://source.unsplash.com/1600x900/?car,lawn"); background-size:cover; background-position:center; }
+.hero h2 { font-size:60px; animation:slideUp 1s ease forwards; }
+.hero p { margin-top:15px; font-size:20px; animation:fadeText 2s ease forwards; }
+/* Fixed Book Now button */
+.hero .book-btn {
+padding: 18px 40px;
+border-radius: 30px;
+background:#00aaff;
+color:white;
+font-size:20px;
+font-weight:600;
+border:none;
+cursor:pointer;
+margin-top:20px;
+transition: all 0.3s ease;
+}
+.hero .book-btn:hover {
+transform: scale(1.08);
+box-shadow:0 0 15px #00aaff;
+}
+
+@keyframes slideUp { from{opacity:0; transform:translateY(40px);} to{opacity:1; transform:translateY(0);} }
+@keyframes fadeText { from{opacity:0;} to{opacity:1;} }
 
 /* SECTIONS */
-.section { padding: 80px 8%; }
-.section h2 { text-align: center; margin-bottom: 50px; font-size: 40px; }
+.section { padding:80px 8%; }
+.section h2 { text-align:center; margin-bottom:50px; font-size:40px; }
 
 /* SERVICES */
-.services { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 30px; }
-.card { background: #1a1a1a; padding: 30px; border-radius: 15px; text-align: center; transition: transform .4s, box-shadow .4s; opacity: 0; transform: translateY(40px); }
-.card:hover { transform: translateY(-12px) scale(1.03); box-shadow: 0 15px 35px rgba(0,170,255,.35); }
-.price { color: #00aaff; font-size: 20px; margin-top: 10px; }
+.services { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; }
+.card { background:#1a1a1a; padding:30px; border-radius:15px; text-align:center; transition:transform .4s, box-shadow .4s, opacity .8s ease, transform .8s ease; opacity:0; transform:translateY(40px); }
+.card:hover { transform:translateY(-12px) scale(1.03); box-shadow:0 15px 35px rgba(0,170,255,.35); }
+.price { color:#00aaff; font-size:20px; margin-top:10px; }
 
 /* QUOTE CALCULATORS */
-.calculator { background: #111; padding: 40px; border-radius: 15px; max-width: 500px; margin: 40px auto; text-align: center; opacity: 0; transform: translateY(40px); }
-.calculator input { padding: 10px; margin-top: 10px; width: 100%; border-radius: 8px; border: none; }
-.calculator button { margin-top: 15px; padding: 12px 20px; background: #00aaff; border: none; border-radius: 8px; cursor: pointer; }
+.calculator { background:#111; padding:40px; border-radius:15px; max-width:500px; margin:40px auto; text-align:center; opacity:0; transform:translateY(40px); transition: all .8s ease; }
+.calculator input { padding:10px; margin-top:10px; width:100%; border-radius:8px; border:none; }
+.calculator button { margin-top:15px; padding:12px 20px; background:#00aaff; border:none; border-radius:8px; cursor:pointer; color:white; font-weight:600; }
 
 /* CONTACT */
-.contact { text-align: center; padding: 80px 8%; background: #111; }
-.contact button { padding: 15px 35px; border-radius: 30px; background: #00aaff; color: white; border: none; cursor: pointer; font-size: 16px; font-weight: 600; margin: 8px; transition: all 0.3s ease; min-width: 160px; }
-.contact button:hover { transform: scale(1.08); box-shadow: 0 0 15px #00aaff; }
-@media screen and (max-width: 600px) {
-.contact button { display: block; width: 80%; margin: 10px auto; }
-.floating-text { padding: 12px 18px; font-size: 14px; }
+.contact { text-align:center; padding:80px 8%; background:#111; }
+.contact button { padding:15px 35px; border-radius:30px; background:#00aaff; color:white; border:none; cursor:pointer; font-size:16px; font-weight:600; margin:8px; transition: all 0.3s ease; min-width:160px; }
+.contact button:hover { transform: scale(1.08); box-shadow:0 0 15px #00aaff; }
+
+/* MOBILE */
+@media screen and (max-width:600px){
+.contact button { display:block; width:80%; margin:10px auto; }
+.floating-text { padding:12px 18px; font-size:14px; }
 }
 
 /* FOOTER */
-footer { text-align: center; padding: 30px; background: black; }
+footer { text-align:center; padding:30px; background:black; }
 
-/* FADE-IN ANIMATION */
-.fade-in { opacity: 1 !important; transform: translateY(0) !important; transition: all .8s ease; }
+/* FADE-IN */
+.fade-in { opacity:1 !important; transform:translateY(0) !important; }
 
 /* FLOATING BUTTON */
-.floating-text { position: fixed; bottom: 25px; right: 25px; background: #00aaff; color: white; padding: 16px 22px; border-radius: 40px; font-weight: 600; text-decoration: none; box-shadow: 0 10px 25px rgba(0,0,0,.5); transition: .3s; z-index: 999; }
-.floating-text:hover { transform: scale(1.08); box-shadow: 0 0 20px #00aaff; }
+.floating-text { position:fixed; bottom:25px; right:25px; background:#00aaff; color:white; padding:16px 22px; border-radius:40px; font-weight:600; text-decoration:none; box-shadow:0 10px 25px rgba(0,0,0,.5); transition:.3s; z-index:999; }
+.floating-text:hover { transform:scale(1.08); box-shadow:0 0 20px #00aaff; }
 
 </style>
 
 <script>
-/* Quote calculators */
-function mowQuote() { let sqft = document.getElementById("mow").value; let price = sqft * 0.3; document.getElementById("mowResult").innerText = "Estimate: $" + price.toFixed(2); }
-function pressureQuote() { let sqft = document.getElementById("pressure").value; let price = sqft * 0.5; document.getElementById("pressureResult").innerText = "Estimate: $" + price.toFixed(2); }
-function snowQuote() { let sqft = document.getElementById("snow").value; let price = sqft * 0.3; document.getElementById("snowResult").innerText = "Estimate: $" + price.toFixed(2); }
+/* Quote Calculators */
+function mowQuote(){ let sqft = document.getElementById("mow").value; let price = sqft*0.3; document.getElementById("mowResult").innerText = "Estimate: $"+price.toFixed(2); }
+function pressureQuote(){ let sqft = document.getElementById("pressure").value; let price = sqft*0.5; document.getElementById("pressureResult").innerText = "Estimate: $"+price.toFixed(2); }
+function snowQuote(){ let sqft = document.getElementById("snow").value; let price = sqft*0.3; document.getElementById("snowResult").innerText = "Estimate: $"+price.toFixed(2); }
 
-/* Scroll animation */
+/* Fade-in animation */
 const observer = new IntersectionObserver(entries => {
 entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add("fade-in"); } });
 }, { threshold: 0.1 });
 
-document.querySelectorAll(".card, .calculator").forEach(el => { observer.observe(el); });
-
-/* Immediately show elements in view on load */
 window.addEventListener("load", () => {
-document.querySelectorAll(".card, .calculator").forEach(el => {
+document.querySelectorAll(".card, .calculator").forEach(el=>{
 const rect = el.getBoundingClientRect();
-if(rect.top < window.innerHeight) { el.classList.add("fade-in"); }
+if(rect.top < window.innerHeight) el.classList.add("fade-in");
+observer.observe(el);
 });
 });
 </script>
@@ -101,7 +117,7 @@ if(rect.top < window.innerHeight) { el.classList.add("fade-in"); }
 <h2>Property Care & Auto Detailing</h2>
 <p>Your Property Is Our Priority</p>
 <p>Lawn Care • Pressure Washing • Snow Removal • Professional Car Detailing</p>
-<button onclick="document.getElementById('contact').scrollIntoView()">Book Now</button>
+<button class="book-btn" onclick="document.getElementById('contact').scrollIntoView()">Book Now</button>
 </section>
 
 <section class="section" id="services">
