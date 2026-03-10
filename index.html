@@ -34,7 +34,7 @@ footer{text-align:center;padding:30px;background:black;}
 /* Slider styles - smaller images */
 .compare {
 position: relative;
-max-width: 500px; /* smaller width */
+max-width: 500px;
 margin: 30px auto;
 border-radius: 15px;
 overflow: hidden;
@@ -117,16 +117,25 @@ function emailGavin(){window.location.href="mailto:Gavin.Purman@gmail.com?subjec
 <p><strong>Note:</strong> If you are unable to find the square footage of your lawn, driveway, or walkway, you can call us with your address and we’ll provide a quote!</p>
 </div>
 
+<!-- Lawn mowing calculator -->
 <div class="calculator">
 <label for="mow">Mow Estimate (sqft) – For property services:</label>
 <input type="number" id="mow" placeholder="Enter square feet">
 <button onclick="alert('Estimate: $' + (document.getElementById('mow').value*0.30).toFixed(2))">Get Estimate</button>
 </div>
 
+<!-- Pressure washing calculator -->
 <div class="calculator">
 <label for="pressure">Pressure Wash Estimate (sqft):</label>
 <input type="number" id="pressure" placeholder="Enter square feet">
 <button onclick="alert('Estimate: $' + (document.getElementById('pressure').value*0.50).toFixed(2))">Get Estimate</button>
+</div>
+
+<!-- Snow / Shoveling calculator -->
+<div class="calculator">
+<label for="shovel">Snow/Shoveling Estimate (sqft):</label>
+<input type="number" id="shovel" placeholder="Enter square feet">
+<button onclick="alert('Estimate: $' + (document.getElementById('shovel').value*0.40).toFixed(2))">Get Estimate</button>
 </div>
 
 <!-- Google Earth instructions -->
