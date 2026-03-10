@@ -111,16 +111,25 @@ function emailGavin(){window.location.href="mailto:Gavin.Purman@gmail.com?subjec
 
 <section class="section" id="quote">
 <h2>Quick Quotes</h2>
+
+<!-- Call notice -->
+<div style="text-align:center;margin-bottom:20px; max-width:600px; margin:auto; line-height:1.6; background:#1a1a1a; padding:15px; border-radius:10px;">
+<p><strong>Note:</strong> If you are unable to find the square footage of your lawn, driveway, or walkway, you can call us with your address and we’ll provide a quote!</p>
+</div>
+
 <div class="calculator">
 <label for="mow">Mow Estimate (sqft) – For property services:</label>
 <input type="number" id="mow" placeholder="Enter square feet">
 <button onclick="alert('Estimate: $' + (document.getElementById('mow').value*0.30).toFixed(2))">Get Estimate</button>
 </div>
+
 <div class="calculator">
 <label for="pressure">Pressure Wash Estimate (sqft):</label>
 <input type="number" id="pressure" placeholder="Enter square feet">
 <button onclick="alert('Estimate: $' + (document.getElementById('pressure').value*0.50).toFixed(2))">Get Estimate</button>
 </div>
+
+<!-- Google Earth instructions -->
 <div style="text-align:center;margin-top:20px; max-width:600px; margin:auto; line-height:1.6;">
 <h3>How to Measure Square Footage Using Google Earth:</h3>
 <ol>
