@@ -9,286 +9,69 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
-html{
-scroll-behavior:smooth;
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins;
-}
-
-body{
-background:#0d0d0d;
-color:white;
-}
+html { scroll-behavior: smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Poppins; }
+body { background: #0d0d0d; color: white; }
 
 /* NAVBAR */
-
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 8%;
-background:black;
-position:sticky;
-top:0;
-z-index:1000;
-}
-
-nav h1{
-color:#00aaff;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin-left:25px;
-font-weight:500;
-}
+nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: black; position: sticky; top: 0; z-index: 1000; }
+nav h1 { color: #00aaff; }
+nav a { color: white; text-decoration: none; margin-left: 25px; font-weight: 500; }
 
 /* HERO */
-
-.hero{
-height:90vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-background:
-linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-url("https://source.unsplash.com/1600x900/?car,lawn");
-background-size:cover;
-background-position:center;
-}
-
-.hero h2{
-font-size:60px;
-animation:slideUp 1s ease forwards;
-}
-
-.hero p{
-margin-top:15px;
-font-size:20px;
-animation:fadeText 2s ease forwards;
-}
-
-@keyframes slideUp{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-@keyframes fadeText{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-/* BUTTONS */
-
-button{
-transition:all .3s ease;
-}
+.hero { height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)), url("https://source.unsplash.com/1600x900/?car,lawn"); background-size: cover; background-position: center; }
+.hero h2 { font-size: 60px; animation: slideUp 1s ease forwards; }
+.hero p { margin-top: 15px; font-size: 20px; animation: fadeText 2s ease forwards; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeText { from { opacity: 0; } to { opacity: 1; } }
 
 /* SECTIONS */
-
-.section{
-padding:80px 8%;
-}
-
-.section h2{
-text-align:center;
-margin-bottom:50px;
-font-size:40px;
-}
+.section { padding: 80px 8%; }
+.section h2 { text-align: center; margin-bottom: 50px; font-size: 40px; }
 
 /* SERVICES */
-
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
-
-.card{
-background:#1a1a1a;
-padding:30px;
-border-radius:15px;
-text-align:center;
-transition:transform .4s, box-shadow .4s;
-opacity:0;
-transform:translateY(40px);
-}
-
-.card:hover{
-transform:translateY(-12px) scale(1.03);
-box-shadow:0 15px 35px rgba(0,170,255,.35);
-}
-
-.price{
-color:#00aaff;
-font-size:20px;
-margin-top:10px;
-}
+.services { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 30px; }
+.card { background: #1a1a1a; padding: 30px; border-radius: 15px; text-align: center; transition: transform .4s, box-shadow .4s; opacity: 0; transform: translateY(40px); }
+.card:hover { transform: translateY(-12px) scale(1.03); box-shadow: 0 15px 35px rgba(0,170,255,.35); }
+.price { color: #00aaff; font-size: 20px; margin-top: 10px; }
 
 /* QUOTE CALCULATORS */
-
-.calculator{
-background:#111;
-padding:40px;
-border-radius:15px;
-max-width:500px;
-margin:40px auto;
-text-align:center;
-opacity:0;
-transform:translateY(40px);
-}
-
-.calculator input{
-padding:10px;
-margin-top:10px;
-width:100%;
-border-radius:8px;
-border:none;
-}
-
-.calculator button{
-margin-top:15px;
-padding:12px 20px;
-background:#00aaff;
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
+.calculator { background: #111; padding: 40px; border-radius: 15px; max-width: 500px; margin: 40px auto; text-align: center; opacity: 0; transform: translateY(40px); }
+.calculator input { padding: 10px; margin-top: 10px; width: 100%; border-radius: 8px; border: none; }
+.calculator button { margin-top: 15px; padding: 12px 20px; background: #00aaff; border: none; border-radius: 8px; cursor: pointer; }
 
 /* CONTACT */
-
-.contact{
-text-align:center;
-padding:80px 8%;
-background:#111;
-}
-
-/* Contact buttons responsive */
-.contact button {
-padding: 15px 35px;
-border-radius: 30px;
-background: #00aaff;
-color: white;
-border: none;
-cursor: pointer;
-font-size: 16px;
-font-weight: 600;
-margin: 8px;
-transition: all 0.3s ease;
-min-width: 160px;
-}
-
-.contact button:hover {
-transform: scale(1.08);
-box-shadow: 0 0 15px #00aaff;
-}
-
-/* Stack buttons on mobile */
+.contact { text-align: center; padding: 80px 8%; background: #111; }
+.contact button { padding: 15px 35px; border-radius: 30px; background: #00aaff; color: white; border: none; cursor: pointer; font-size: 16px; font-weight: 600; margin: 8px; transition: all 0.3s ease; min-width: 160px; }
+.contact button:hover { transform: scale(1.08); box-shadow: 0 0 15px #00aaff; }
 @media screen and (max-width: 600px) {
-.contact button {
-display: block;
-width: 80%;
-margin: 10px auto;
-}
-
-/* Shrink floating button slightly */
-.floating-text {
-padding: 12px 18px;
-font-size: 14px;
-}
+.contact button { display: block; width: 80%; margin: 10px auto; }
+.floating-text { padding: 12px 18px; font-size: 14px; }
 }
 
 /* FOOTER */
+footer { text-align: center; padding: 30px; background: black; }
 
-footer{
-text-align:center;
-padding:30px;
-background:black;
-}
+/* FADE-IN ANIMATION */
+.fade-in { opacity: 1 !important; transform: translateY(0) !important; transition: all .8s ease; }
 
-/* FADE-IN SCROLL ANIMATION */
-
-.fade-in{
-opacity:1 !important;
-transform:translateY(0) !important;
-transition:all .8s ease;
-}
-
-/* FLOATING TEXT BUTTON */
-
-.floating-text{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#00aaff;
-color:white;
-padding:16px 22px;
-border-radius:40px;
-font-weight:600;
-text-decoration:none;
-box-shadow:0 10px 25px rgba(0,0,0,.5);
-transition:.3s;
-z-index:999;
-}
-
-.floating-text:hover{
-transform:scale(1.08);
-box-shadow:0 0 20px #00aaff;
-}
+/* FLOATING BUTTON */
+.floating-text { position: fixed; bottom: 25px; right: 25px; background: #00aaff; color: white; padding: 16px 22px; border-radius: 40px; font-weight: 600; text-decoration: none; box-shadow: 0 10px 25px rgba(0,0,0,.5); transition: .3s; z-index: 999; }
+.floating-text:hover { transform: scale(1.08); box-shadow: 0 0 20px #00aaff; }
 
 </style>
 
 <script>
+/* Quote calculators */
+function mowQuote() { let sqft = document.getElementById("mow").value; let price = sqft * 0.3; document.getElementById("mowResult").innerText = "Estimate: $" + price.toFixed(2); }
+function pressureQuote() { let sqft = document.getElementById("pressure").value; let price = sqft * 0.5; document.getElementById("pressureResult").innerText = "Estimate: $" + price.toFixed(2); }
+function snowQuote() { let sqft = document.getElementById("snow").value; let price = sqft * 0.3; document.getElementById("snowResult").innerText = "Estimate: $" + price.toFixed(2); }
 
-/* Mowing calculator */
-function mowQuote(){
-let sqft=document.getElementById("mow").value;
-let price=sqft*.30;
-document.getElementById("mowResult").innerText="Estimate: $"+price.toFixed(2);
-}
-
-/* Pressure washing calculator */
-function pressureQuote(){
-let sqft=document.getElementById("pressure").value;
-let price=sqft*.50;
-document.getElementById("pressureResult").innerText="Estimate: $"+price.toFixed(2);
-}
-
-/* Snow removal calculator */
-function snowQuote(){
-let sqft=document.getElementById("snow").value;
-let price=sqft*.30;
-document.getElementById("snowResult").innerText="Estimate: $"+price.toFixed(2);
-}
-
-/* SCROLL ANIMATION */
+/* Scroll animation */
 const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if(entry.isIntersecting){
-entry.target.classList.add("fade-in")
-}
-})
-})
-
-document.querySelectorAll(".card, .calculator").forEach(el=>{
-observer.observe(el)
-})
-
+entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add("fade-in"); } });
+});
+document.querySelectorAll(".card, .calculator").forEach(el => { observer.observe(el); });
 </script>
 
 </head>
@@ -314,30 +97,10 @@ observer.observe(el)
 <section class="section" id="services">
 <h2>Our Services</h2>
 <div class="services">
-<div class="card">
-<h3>Car Detailing</h3>
-<p>Interior + exterior deep clean</p>
-<div class="price">
-Sedan $75<br>
-SUV $100<br>
-Truck $140
-</div>
-</div>
-<div class="card">
-<h3>Lawn Mowing</h3>
-<p>Keep your property looking perfect all season</p>
-<div class="price">$0.30 per sq ft</div>
-</div>
-<div class="card">
-<h3>Pressure Washing</h3>
-<p>Driveways, sidewalks, decks, siding</p>
-<div class="price">$0.50 per sq ft</div>
-</div>
-<div class="card">
-<h3>Snow Removal</h3>
-<p>Driveways & sidewalks cleared</p>
-<div class="price">$0.30 per sq ft</div>
-</div>
+<div class="card"><h3>Car Detailing</h3><p>Interior + exterior deep clean</p><div class="price">Sedan $75<br>SUV $100<br>Truck $140</div></div>
+<div class="card"><h3>Lawn Mowing</h3><p>Keep your property looking perfect all season</p><div class="price">$0.30 per sq ft</div></div>
+<div class="card"><h3>Pressure Washing</h3><p>Driveways, sidewalks, decks, siding</p><div class="price">$0.50 per sq ft</div></div>
+<div class="card"><h3>Snow Removal</h3><p>Driveways & sidewalks cleared</p><div class="price">$0.30 per sq ft</div></div>
 </div>
 </section>
 
