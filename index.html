@@ -65,9 +65,9 @@ overflow:hidden;
 100% {opacity: 1;}
 }
 
-/* Hero section styles for video background */
+/* Hero section styles for YouTube video background */
 .hero{position:relative;height:90vh;display:flex;justify-content:center;align-items:center;text-align:center;overflow:hidden;color:white;}
-.hero video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1;}
+.hero iframe{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1;pointer-events:none;}
 .hero-content{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
 .hero h2{font-size:60px;animation:slideUp 1s ease forwards;}
 .hero p{margin-top:15px;font-size:20px;animation:fadeText 2s ease forwards;}
@@ -94,12 +94,10 @@ function emailGavin(){window.location.href="mailto:Gavin.Purman@gmail.com?subjec
 </div>
 </nav>
 
-<!-- Hero Section with Video Background -->
+<!-- Hero Section with YouTube Background -->
 <section class="hero">
-<video autoplay muted loop playsinline>
-<source src="videos/09BDD16B-C3AF-4B3D-AE50-1F6CF1274E49.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+<iframe src="https://www.youtube.com/embed/n1bnFyQSbAY?autoplay=1&mute=1&loop=1&playlist=n1bnFyQSbAY&controls=0&showinfo=0&modestbranding=1"
+frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 <div class="hero-content">
 <h2>Professional Car Detailing & Property Services</h2>
 <p>Fast, reliable, and affordable service for your vehicle and property.</p>
